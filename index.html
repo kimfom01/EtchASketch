@@ -10,11 +10,23 @@
 </head>
 
 <body>
-    <h1>Etch A Sketch</h1>
+    <main>
+        <h1>Etch A Sketch</h1>
 
-    <div id="container">
+        <div class="container">
+            <div id="boxes">
 
-    </div>
+            </div>
+
+            <form action="javascript:void(0);">
+                <label for="size">Enter Size:</label>
+                <div class="input">
+                    <input id="inputSize" type="text" name="size" placeholder="Enter number">
+                    <button type="submit">Load Tiles</button>
+                </div>
+            </form>
+        </div>
+    </main>
 
     <script src="index.js"></script>
 </body>
