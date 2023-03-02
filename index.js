@@ -1,46 +1,48 @@
 "use strict";
 
-createDivs(undefined, undefined);
+const DEFAULT_SIZE = 20;
 
-const divs = document.querySelectorAll("div.box-white");
+let size = prompt("Enter number of squares per side: ", DEFAULT_SIZE);
 
-divs.forEach((div) => {
-    div.addEventListener("mouseover", function () {
-        div.classList.add("box-black");
-    });
-});
+createPixels(undefined, size);
 
-function createDivs(boxDimension = 30, size = 16) {
-    let container = document.getElementById("boxes");
-    container.style.width = `${size * boxDimension}px`;
-    container.style.height = `${size * boxDimension}px`;
+const button = document.getElementById("button");
+
+button.addEventListener("click", () => {
+    size = prompt("Enter number of squares per side: ", DEFAULT_SIZE);
+
+    removePixels();
+
+    createPixels(undefined, size);
+})
+
+
+function createPixels(boxDimension = 20, size = DEFAULT_SIZE) {
+    let rootDiv = document.getElementById("root-div");
+    rootDiv.style.width = `${size * boxDimension}px`;
+    rootDiv.style.height = `${size * boxDimension}px`;
 
     for (let row = 0; row < size; row++) {
         for (let col = 0; col < size; col++) {
             let div = document.createElement("div");
-            div.classList.add("box-white");
+            div.classList.add("white-pixel");
             div.style.width = `${boxDimension}px`
 
-            container.append(div);
+            rootDiv.append(div);
         }
     }
+
+    const pixels = document.querySelectorAll("div.white-pixel");
+
+    pixels.forEach((div) => {
+        div.addEventListener("mouseover", function () {
+            div.classList.add("black-pixel");
+        });
+    });
 }
 
-// const loadTilesButton = document.querySelector("button");
+function removePixels() {
+    let rootDiv = document.getElementById("root-div");
 
-// loadTilesButton.addEventListener("click", () => {
-//     createDivs(undefined, 20)
-// });
-
-// const size = document.getElementById("inputSize");
-
-// console.log(size.value)
-
-
-// function resetDivs(divs) {
-//     divs.forEach((div) => {
-//         div.addEventListener("mouseleave", function () {
-//             div.classList.remove("box-black");
-//         });
-//     });
-// }
+    rootDiv.innerHTML = "";
+}
