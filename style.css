@@ -1,14 +1,14 @@
-#boxes {
+#root-div {
     display: flex;
     flex-wrap: wrap;
     border: 2px solid black;
 }
 
-.box-white {
+.white-pixel {
     background-color: white;
 }
 
-.box-black {
+.black-pixel {
     background-color: black;
 }
 
@@ -19,7 +19,6 @@ main {
     width: 50%;
 }
 
-.container {
-    display: flex;
-    gap: 30px;
+.input {
+    padding-bottom: 20px;
 }
